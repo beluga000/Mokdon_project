@@ -3,32 +3,23 @@
     <header class="web-header-container">
       <div class="web-header">
         <div class="logo_img" @click="goMain">
-          <img src="~src/img/mokdon_sm_logo.png" alt="목돈로고">
+          <img src="~src/img/mokdon_sm_logo.png" alt="목돈로고" />
         </div>
         <ul class="toolbar-menu">
-
           <li class="menu-item deposit_title">
-            <div class="menu-title">
-              예/적금
-            </div>
+            <div class="menu-title">예/적금</div>
           </li>
           <li class="menu-item">
-            <div class="menu-title">
-              신용카드
-            </div>
+            <div class="menu-title">신용카드</div>
           </li>
           <li class="menu-item">
-            <div class="menu-title">
-              내게맞는카드추천
-            </div>
+            <div class="menu-title">내게맞는카드추천</div>
           </li>
           <li class="menu-item">
-            <div class="menu-title">
-              목돈마련정보
-            </div>
+            <div class="menu-title">목돈마련정보</div>
           </li>
         </ul>
-      <q-btn
+        <q-btn
           flat
           dense
           round
@@ -46,41 +37,35 @@
           <div class="menu-list-box">
             <article class="menu-event">
               <p class="event-title">
-                최고금리조회하고<br>
+                최고금리조회하고<br />
                 목돈모으기 🤑
               </p>
               <div class="event-img">
-                <img src="~src/img/vault.svg" alt="vault 이미지"/>
+                <img src="~src/img/vault.svg" alt="vault 이미지" />
               </div>
               <button class="btn event-btn">최고금리 예/적금 조회</button>
             </article>
             <article class="menu-item-list">
               <section>
                 <ul class="menu-list-wrap">
-                  <div class="menu-list list-title">
-                  최고 금리 예금 찾기
-                  </div>
+                  <div class="menu-list list-title">최고 금리 예금 찾기</div>
                   <li class="menu-list" @click="goMenu('예금')">
                     <p>✅ 예금 상품 추천</p>
                   </li>
-
                 </ul>
                 <ul class="menu-list-wrap">
-                <div class="menu-list list-title">
-                  최고 금리 적금 찾기
-                </div>
-                  <li class="menu-list" @click="goMenu('적금')">
+                  <div class="menu-list list-title">최고 금리 적금 찾기</div>
+                  <li class="menu-list" @click="goMenu('적금추천')">
                     <p>➕ 적금 상품 추천</p>
                   </li>
-
+                  <li class="menu-list" @click="goMenu('적금')">
+                    <p>➕ 적금 상품</p>
+                  </li>
                 </ul>
               </section>
               <section>
-
                 <ul class="menu-list-wrap">
-                <div class="menu-list list-title">
-                  신용카드 추천
-                </div>
+                  <div class="menu-list list-title">신용카드 추천</div>
                   <li class="menu-list" @click="goMenu('신용카드')">
                     <!-- <p>🥇 2024 신용카드 추천</p> -->
                     <p>전체보기</p>
@@ -93,9 +78,7 @@
                   </li> -->
                 </ul>
                 <ul class="menu-list-wrap">
-                  <div class="menu-list list-title">
-                  혜택별 카드 추천
-                  </div>
+                  <div class="menu-list list-title">혜택별 카드 추천</div>
                   <li class="menu-list" @click="goMenu('주유')">
                     <p>✅ 주유 최대 할인 카드</p>
                   </li>
@@ -109,9 +92,7 @@
               </section>
               <section>
                 <ul class="menu-list-wrap">
-                  <div class="menu-list list-title">
-                  혜택별 카드 추천
-                  </div>
+                  <div class="menu-list list-title">혜택별 카드 추천</div>
                   <li class="menu-list">
                     <p>✅ 주유 최대 할인 카드</p>
                   </li>
@@ -123,9 +104,7 @@
                   </li>
                 </ul>
                 <ul class="menu-list-wrap">
-                <div class="menu-list list-title">
-                  인기 카드 추천
-                </div>
+                  <div class="menu-list list-title">인기 카드 추천</div>
                   <li class="menu-list">
                     <p>🥇 2024 신용카드 추천</p>
                   </li>
@@ -139,9 +118,7 @@
               </section>
               <section>
                 <ul class="menu-list-wrap">
-                  <div class="menu-list list-title">
-                  혜택별 카드 추천
-                  </div>
+                  <div class="menu-list list-title">혜택별 카드 추천</div>
                   <li class="menu-list">
                     <p>✅ 주유 최대 할인 카드</p>
                   </li>
@@ -153,9 +130,7 @@
                   </li>
                 </ul>
                 <ul class="menu-list-wrap">
-                <div class="menu-list list-title">
-                  인기 카드 추천
-                </div>
+                  <div class="menu-list list-title">인기 카드 추천</div>
                   <li class="menu-list">
                     <p>🥇 2024 신용카드 추천</p>
                   </li>
@@ -171,7 +146,6 @@
           </div>
         </div>
       </div>
-
     </header>
 
     <q-drawer
@@ -181,10 +155,7 @@
       class="mobile-block"
     >
       <q-list>
-        <q-item-label
-          header
-        >
-        </q-item-label>
+        <q-item-label header> </q-item-label>
 
         <EssentialLink
           v-for="link in linksList"
@@ -201,103 +172,105 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
-import EssentialLink from 'components/EssentialLink.vue'
+import { ref } from "vue";
+import EssentialLink from "components/EssentialLink.vue";
 import { useRouter, useRoute } from "vue-router";
 
 defineOptions({
-  name: 'MainLayout'
-})
+  name: "MainLayout",
+});
 
 const $router = useRouter();
 
 const linksList = [
   {
-    title: 'Docs',
-    caption: 'quasar.dev',
-    icon: 'school',
-    link: 'https://quasar.dev'
+    title: "Docs",
+    caption: "quasar.dev",
+    icon: "school",
+    link: "https://quasar.dev",
   },
   {
-    title: 'Github',
-    caption: 'github.com/quasarframework',
-    icon: 'code',
-    link: 'https://github.com/quasarframework'
+    title: "Github",
+    caption: "github.com/quasarframework",
+    icon: "code",
+    link: "https://github.com/quasarframework",
   },
   {
-    title: 'Discord Chat Channel',
-    caption: 'chat.quasar.dev',
-    icon: 'chat',
-    link: 'https://chat.quasar.dev'
+    title: "Discord Chat Channel",
+    caption: "chat.quasar.dev",
+    icon: "chat",
+    link: "https://chat.quasar.dev",
   },
   {
-    title: 'Forum',
-    caption: 'forum.quasar.dev',
-    icon: 'record_voice_over',
-    link: 'https://forum.quasar.dev'
+    title: "Forum",
+    caption: "forum.quasar.dev",
+    icon: "record_voice_over",
+    link: "https://forum.quasar.dev",
   },
   {
-    title: 'Twitter',
-    caption: '@quasarframework',
-    icon: 'rss_feed',
-    link: 'https://twitter.quasar.dev'
+    title: "Twitter",
+    caption: "@quasarframework",
+    icon: "rss_feed",
+    link: "https://twitter.quasar.dev",
   },
   {
-    title: 'Facebook',
-    caption: '@QuasarFramework',
-    icon: 'public',
-    link: 'https://facebook.quasar.dev'
+    title: "Facebook",
+    caption: "@QuasarFramework",
+    icon: "public",
+    link: "https://facebook.quasar.dev",
   },
   {
-    title: 'Quasar Awesome',
-    caption: 'Community Quasar projects',
-    icon: 'favorite',
-    link: 'https://awesome.quasar.dev'
-  }
-]
+    title: "Quasar Awesome",
+    caption: "Community Quasar projects",
+    icon: "favorite",
+    link: "https://awesome.quasar.dev",
+  },
+];
 
-const leftDrawerOpen = ref(false)
+const leftDrawerOpen = ref(false);
 
-function toggleLeftDrawer () {
-  leftDrawerOpen.value = !leftDrawerOpen.value
+function toggleLeftDrawer() {
+  leftDrawerOpen.value = !leftDrawerOpen.value;
 }
 
 // ******* web toolbar menu ********** //
 
 const goMenu = (menu) => {
-  if (menu == '신용카드') {
+  if (menu == "신용카드") {
     $router.push({
       path: `/savings/SavingsAccount`,
     });
-  } else if (menu == '적금') {
+  } else if (menu == "적금") {
     $router.push({
       path: `/deposit/DepositList`,
     });
-  } else if (menu == '교통') {
+  } else if (menu == "교통") {
     $router.push({
       path: `/savings/SavingsAccount_Menu/대중교통`,
     });
-  } else if (menu == '통신') {
+  } else if (menu == "통신") {
     $router.push({
       path: `/savings/SavingsAccount_Menu/통신`,
     });
-  }  else if (menu == '주유') {
+  } else if (menu == "주유") {
     $router.push({
       path: `/savings/SavingsAccount_Menu/주유`,
     });
-  } else if (menu == '예금') {
+  } else if (menu == "예금") {
     $router.push({
       path: `/instalment/InstalmentList`,
     });
+  } else if (menu == "적금추천") {
+    $router.push({
+      path: `/deposit/DepositRecommand`,
+    });
   }
-}
+};
 
 const goMain = () => {
   $router.push({
-      path: `/`,
-    });
-}
+    path: `/`,
+  });
+};
 </script>
-<style lang="scss" scoped>
-
-</style>
+<style lang="scss" scoped></style>
