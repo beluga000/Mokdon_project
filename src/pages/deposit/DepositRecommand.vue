@@ -11,7 +11,7 @@
           <div class="amount-op">
             <div>이하 금액</div>
             <div>1000만원</div>
-            <div>3000만원</div>
+            <div class="active">3000만원</div>
             <div>5000만원</div>
             <div>1억</div>
             <div>이상 금액</div>
@@ -26,7 +26,7 @@
             <div>6개월</div>
             <div>1년</div>
             <div>2년</div>
-            <div>3년</div>
+            <div class="active">3년</div>
             <div>5년</div>
             <div>직접 입력</div>
           </div>
@@ -50,7 +50,7 @@
           <p>청년여부</p>
           <div class="age-op opts">
             <div>미성년자</div>
-            <div>만 19세 - 34세</div>
+            <div class="active">만 19세 - 34세</div>
             <div>만 40세 이상</div>
           </div>
         </div>
@@ -58,20 +58,20 @@
           <p>취약계층</p>
           <div class="weak-op opts">
             <div>해당 있음</div>
-            <div>해당 없음</div>
+            <div class="active">해당 없음</div>
           </div>
         </div>
         <div class="child-wrapper">
           <p>자녀여부</p>
           <div class="child-op opts">
-            <div>자녀 있음</div>
+            <div class="active">자녀 있음</div>
             <div>자녀 없음</div>
           </div>
         </div>
         <div class="business-wrapper">
           <p>사업자여부</p>
           <div class="busi-op opts">
-            <div>사업자</div>
+            <div class="active">사업자</div>
             <div>개인</div>
           </div>
         </div>
@@ -79,7 +79,7 @@
           <p>군복무여부</p>
           <div class="mili-op opts">
             <div>해당 있음</div>
-            <div>해당 없음</div>
+            <div class="active">해당 없음</div>
           </div>
         </div>
       </div>
@@ -360,5 +360,22 @@ p.info-title {
 
 .amount-input {
   display: none;
+}
+
+.active {
+  border: 2px solid #1049de;
+}
+
+.amount-op div.active,
+.period-op div.active,
+.weak-op div.active,
+.age-op div.active,
+.child-op div.active,
+.mili-op div.active {
+  color: #1049de;
+}
+
+.busi-op div.active {
+  color: #1049de !important;
 }
 </style>
