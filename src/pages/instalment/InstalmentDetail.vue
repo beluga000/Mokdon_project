@@ -235,16 +235,16 @@
 
       <section class="page-section">
         <div class="TabPanel_article__avbnv" id="RELATED_PRODUCT">
-          <h4 class="TabPanel_title">금리 높은 적금</h4>
+          <h4 class="TabPanel_title">금리 높은 예금</h4>
           <ul>
             <li
               class="RelatedProduct_item"
-              v-for="(item, idx) in Deposit_Top3"
+              v-for="(item, idx) in Instalment_Top3"
               :key="idx"
             >
               <div
                 class="ProductInfo_article ProductInfo_type"
-                @click="goDepositDetail(item.code)"
+                @click="goInstalmentDetail(item.code)"
               >
                 <span class="ProductInfo_bi-circle">
                   <span
@@ -252,7 +252,7 @@
                     style="width: 40px; height: 40px"
                   >
                     <img
-                      :src="item.companylogourl"
+                      :src="item.companyLogoURL"
                       alt="BK_DAEGU_Profile"
                       width="40"
                       height="40"
@@ -402,7 +402,7 @@ const DepositList = async () => {
 onMounted(() => {
   console.log("$route.params.id", $route.params.id);
   DepositData($route.params.id);
-  DepositList();
+  SearchInstalment();
 });
 
 const amount_of_money = ref(100000);
@@ -460,10 +460,24 @@ const clearInput = () => {
   amount_of_money.value = 0;
 };
 
-const goDepositDetail = (detailId) => {
+const Instalment_Top3 = ref([]);
+
+const SearchInstalment = async () => {
+  const url = `${process.env.API}/v1/bank/instalment/top3`;
+  await api
+    .get(url)
+    .then((res) => {
+      Instalment_Top3.value = res.data.Instalment_Savingss;
+    })
+    .catch((err) => {
+      console.log(err);
+    });
+};
+
+const goInstalmentDetail = (detailId) => {
   console.log("detailId", detailId);
   $router.push({
-    path: `/deposit/DepositDetail/${detailId}`,
+    path: `/instalment/InstalmentDetail/${detailId}`,
   });
 };
 </script>
@@ -634,7 +648,7 @@ const goDepositDetail = (detailId) => {
 }
 
 .application-section {
-  background-color: var(--main-color);
+  background-color: #efae1a;
   color: #ffffff;
   padding: 0;
   position: fixed;
@@ -804,7 +818,7 @@ const goDepositDetail = (detailId) => {
 }
 .rate-sperate.selected .rate-label {
   background-color: #f0f8ff;
-  border-color: #f08200;
+  border-color: #efae1a;
 }
 .description_area {
   margin-top: 20px;
@@ -886,7 +900,7 @@ const goDepositDetail = (detailId) => {
   padding: 0 8px; /* 항목의 좌우 여백 추가 */
   line-height: 26px; /* 항목의 높이 */
   text-align: center; /* 텍스트 중앙 정렬 */
-  color: #f08200;
+  color: #efae1a;
   background-color: #dcf2ff;
 }
 
@@ -896,7 +910,7 @@ const goDepositDetail = (detailId) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #f08200;
+  color: #efae1a;
   background-color: #dcf2ff;
 }
 
@@ -994,7 +1008,7 @@ section.main_info {
 
 .year_best div,
 .year_ideal div {
-  color: #f08200;
+  color: #efae1a;
   font-weight: bold;
   font-size: 30px;
   font-family: "Pretendard";
@@ -1140,6 +1154,6 @@ div.before {
 }
 .InterestRateReceipt_info-desc {
   font-weight: bold;
-  color: #f08200;
+  color: #efae1a;
 }
 </style>
