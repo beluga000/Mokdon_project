@@ -333,6 +333,12 @@
                 <i class="fa-solid fa-xmark"></i>
               </span>
             </li>
+            <li class="search-filter-item" v-if="Selectperiod">
+              <p>{{ Selectperiod }}</p>
+              <span @click="removeFilter('period')">
+                <i class="fa-solid fa-xmark"></i>
+              </span>
+            </li>
             <li
               class="search-filter-item"
               v-for="(benefit, index) in deposit_options"
@@ -340,18 +346,6 @@
             >
               <p>{{ benefit }}</p>
               <span @click="removeFilter('deposit_options', index)">
-                <i class="fa-solid fa-xmark"></i>
-              </span>
-            </li>
-            <li class="search-filter-item" v-if="cardAnnualFee">
-              <p>{{ cardAnnualFee }}</p>
-              <span @click="removeFilter('cardAnnualFee')">
-                <i class="fa-solid fa-xmark"></i>
-              </span>
-            </li>
-            <li class="search-filter-item" v-if="cardPerformance">
-              <p>{{ cardPerformance }}</p>
-              <span @click="removeFilter('cardPerformance')">
                 <i class="fa-solid fa-xmark"></i>
               </span>
             </li>
@@ -479,7 +473,11 @@
       </section> -->
 
       <article>
-        <button class="addData" @click="loadMoreCards">
+        <button
+          class="addData"
+          @click="loadMoreCards"
+          v-if="product.Deposits.length < totalData"
+        >
           <span>더보기 {{ product.Deposits.length }} / {{ totalData }}</span>
         </button>
       </article>
@@ -596,17 +594,23 @@ const loadMoreCards = () => {
   DepositList();
 };
 
+const Selectperiod = ref("");
+
 const select_period = (month) => {
   if (month === "6개월") {
+    Selectperiod.value = "6개월";
     console.log("6개월");
     document.querySelector(".bar_cir").style.transform = "translate(185px, 0)";
   } else if (month === "12개월") {
+    Selectperiod.value = "12개월";
     console.log("12개월");
     document.querySelector(".bar_cir").style.transform = "translate(360px, 0)";
   } else if (month === "24개월 이상") {
+    Selectperiod.value = "24개월 이상";
     console.log("24개월 이상");
     document.querySelector(".bar_cir").style.transform = "translate(537px, 0)";
   } else {
+    Selectperiod.value = "전체";
     console.log("전체");
     document.querySelector(".bar_cir").style.transform = "translate(0, 0)";
   }
@@ -715,6 +719,21 @@ const resetFilters = () => {
   searchForm.value.basic_rate_sort = "";
   searchForm.value.max_rate_sort = "desc";
   DepositList();
+};
+
+const removeFilter = (type, index = null) => {
+  if (type === "bankCompanyName") {
+    bankCompanyName.value = "";
+    changeSearchForm("bank_name", "");
+  } else if (type === "deposit_options" && index !== null) {
+    if (deposit_options) {
+      deposit_options.splice(index, 1);
+      changeSearchForm("categories", deposit_options.join(","));
+    }
+  } else if (type === "period") {
+    Selectperiod.value = "";
+    changeSearchForm("period", "");
+  }
 };
 </script>
 
@@ -1006,6 +1025,7 @@ const resetFilters = () => {
   margin-top: 15px;
   font-size: 15px;
   color: gray;
+  cursor: pointer;
 }
 
 .bar_cir {
@@ -1153,5 +1173,10 @@ div#month_24 {
   vertical-align: top;
   color: #767678;
   gap: 7px;
+}
+.page-event {
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 32px;
 }
 </style>
