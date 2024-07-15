@@ -136,9 +136,26 @@
             </div>
           </div>
         </div>
-      </div>
-      <div class="search-btn">
-        <q-btn label="검색" color="primary" @click="searchSaving()"></q-btn>
+        <div class="search-btn">
+          <q-btn label="검색" color="primary" @click="searchSaving()"></q-btn>
+        </div>
+        <div class="sideBanner" id="sideBanner">
+          <div class="sideTitle">총 합계 보기</div>
+          <div class="sideContent">
+            <ul class="txt_side">
+              <li class="txt_1 stxt">원가 합계</li>
+              <li class="txt_2 stxt">세전이자 합계</li>
+              <li class="txt_3 stxt">이자과세 합계</li>
+              <li class="txt_4 stxt">세후수령액 합계</li>
+            </ul>
+            <ul class="numb_side">
+              <li class="numb_1 snumb">4,000,000</li>
+              <li class="numb_2 snumb">500,000</li>
+              <li class="numb_3 snumb">34,000</li>
+              <li class="numb_4 snumb">50,000,000</li>
+            </ul>
+          </div>
+        </div>
       </div>
 
       <div class="txt-saving">선택하신 조건에 맞는 적금입니다.</div>
@@ -431,8 +448,11 @@ const searchSaving = async () => {
     console.log("결과값", res);
 
     resultDeposit.value = res.data;
+    fun1();
   });
 };
+
+// 사이드 배너
 </script>
 
 <style lang="scss" scoped>
@@ -505,6 +525,7 @@ p.info-title {
   color: #a3a1a1;
   line-height: 30px;
   padding: 0 15px;
+  cursor: pointer;
 }
 
 .input-amount input[type="number"] {
@@ -639,5 +660,53 @@ p.info-title {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+}
+
+button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--standard.q-btn--rectangle.bg-primary.text-white.q-btn--actionable.q-focusable.q-hoverable {
+  width: 80%;
+  font-size: 15px;
+}
+
+.sideBanner {
+  display: flex;
+  flex-direction: column;
+  width: 40%;
+  border: 1px solid #1049de;
+  border-radius: 5px;
+  padding: 20px 20px;
+  position: absolute;
+  background-color: #ffffff;
+  position: absolute;
+  background-color: #ffffff;
+  left: 50%;
+  margin-left: 350px;
+}
+
+.sideContent {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.sideTitle {
+  font-size: 20px;
+  font-weight: bolder;
+  padding-bottom: 35px;
+  color: #1049de;
+}
+
+ul.numb_side {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  font-weight: bolder;
+  color: #1049de;
+  text-align: right;
+}
+
+ul.txt_side {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
 }
 </style>
