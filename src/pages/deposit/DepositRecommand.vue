@@ -139,7 +139,7 @@
         <div class="search-btn">
           <q-btn label="검색" color="primary" @click="searchSaving()"></q-btn>
         </div>
-        <div class="sideBanner" id="sideBanner">
+        <div class="sideBanner">
           <div class="sideTitle">총 합계 보기</div>
           <div class="sideContent">
             <ul class="txt_side">
@@ -201,17 +201,6 @@
             <p>세후수령액</p>
             <p class="aft-tax">{{ item.m_만기금액.toLocaleString() }}원</p>
           </div>
-        </div>
-      </div>
-
-      <div class="result-deposit">
-        <div class="result-period">
-          <p>기간</p>
-          <p>{{ Post_options.period }}개월</p>
-        </div>
-        <div class="result-amount">
-          <p>목표금액</p>
-          <p>{{ Post_options.targetAmount.toLocaleString() }}원</p>
         </div>
       </div>
     </q-page>
@@ -447,7 +436,7 @@ const searchSaving = async () => {
   await api.post(url, Post_options.value).then((res) => {
     console.log("결과값", res);
 
-    resultDeposit.value = res.data;
+    resultDeposit.value = res.data.result;
     fun1();
   });
 };
@@ -668,18 +657,16 @@ button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--standard.q-btn--rectang
 }
 
 .sideBanner {
-  display: flex;
-  flex-direction: column;
-  width: 40%;
-  border: 1px solid #1049de;
-  border-radius: 5px;
+  position: fixed;
+  top: 10%;
+  right: 2%;
+  width: 250px;
   padding: 20px 20px;
-  position: absolute;
   background-color: #ffffff;
-  position: absolute;
-  background-color: #ffffff;
-  left: 50%;
-  margin-left: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+  z-index: 1000;
+  margin-top: 200px;
 }
 
 .sideContent {
