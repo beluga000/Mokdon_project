@@ -137,36 +137,64 @@
           </div>
         </div>
       </div>
+      <div class="search-btn">
+        <q-btn label="검색" color="primary" @click="searchSaving()"></q-btn>
+      </div>
+
       <div class="txt-saving">선택하신 조건에 맞는 적금입니다.</div>
-      <div class="box-saving result">
+      <div
+        class="box-saving result"
+        v-for="(item, idx) in resultDeposit"
+        :key="idx"
+      >
         <div class="saving-top">
           <div class="top-left">
-            <div class="saving-img"><img src="" alt="" /></div>
+            <div class="saving-img">
+              <img
+                :src="item.deposit.companylogourl"
+                alt=""
+                class="deposit-img"
+              />
+            </div>
             <div class="saving-tit">
-              <p class="saving-name">JB 슈퍼씨드</p>
-              <p class="bank-name">전북은행</p>
+              <p class="saving-name">{{ item.deposit.name }}</p>
+              <p class="bank-name">{{ item.deposit.companyName }}</p>
             </div>
           </div>
-          <div class="top-right">금리 <span class="max-rate">13.30%</span></div>
+          <div class="top-right">
+            금리
+            <span class="max-rate">{{ item.deposit.primeInterestRate }}%</span>
+          </div>
         </div>
         <div class="saving-bott">
           <div class="box-tot-price">
             <p>원금 합계</p>
-            <p class="tot-price">1,200,000원</p>
+            <p class="tot-price">{{ item.m_원금.toLocaleString() }}원</p>
           </div>
           <div class="box-bef-int">
             <p>세전 이자</p>
-            <p class="bef-int">+20,800원</p>
+            <p class="bef-int">+{{ item.m_이자.toLocaleString() }}원</p>
           </div>
           <div class="box-int-tax">
             <p>이자과세(15.4%)</p>
-            <p class="int-tax">-3,203원</p>
+            <p class="int-tax">-{{ item.m_세금.toLocaleString() }}원</p>
           </div>
           <div class="line"></div>
           <div class="box-aft-tax">
             <p>세후수령액</p>
-            <p class="aft-tax">1,217,597원</p>
+            <p class="aft-tax">{{ item.m_만기금액.toLocaleString() }}원</p>
           </div>
+        </div>
+      </div>
+
+      <div class="result-deposit">
+        <div class="result-period">
+          <p>기간</p>
+          <p>{{ Post_options.period }}개월</p>
+        </div>
+        <div class="result-amount">
+          <p>목표금액</p>
+          <p>{{ Post_options.targetAmount.toLocaleString() }}원</p>
         </div>
       </div>
     </q-page>
@@ -388,6 +416,23 @@ watch(
   },
   { deep: true }
 );
+
+const resultDeposit = ref({});
+
+const searchSaving = async () => {
+  // Post_options.value.period string 변환
+  Post_options.value.period = Post_options.value.period.toString();
+
+  console.log("Post_options", Post_options.value);
+
+  const url = `${process.env.API}/v1/bank/recommand/deposit`;
+
+  await api.post(url, Post_options.value).then((res) => {
+    console.log("결과값", res);
+
+    resultDeposit.value = res.data;
+  });
+};
 </script>
 
 <style lang="scss" scoped>
@@ -497,7 +542,13 @@ p.info-title {
 .saving-img {
   width: 50px;
   height: 50px;
-  background-color: blue;
+
+  border-radius: 50px;
+}
+.deposit-img {
+  width: 50px;
+  height: 50px;
+
   border-radius: 50px;
 }
 
@@ -550,6 +601,7 @@ p.info-title {
 
 .box-saving.result {
   padding-right: 40px;
+  margin-top: 20px;
 }
 
 .tot-price,
@@ -582,5 +634,10 @@ p.info-title {
 
 .q-dialog {
   width: 300px;
+}
+.search-btn {
+  display: flex;
+  justify-content: center;
+  margin-top: 30px;
 }
 </style>
