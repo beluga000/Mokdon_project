@@ -18,13 +18,8 @@
               {{ amount }}
             </div>
             <!-- 직접입력 버튼 초기화  -->
-            <div>
-              <q-btn
-                flat
-                label="🪣"
-                color="primary"
-                @click="resetAmount()"
-              ></q-btn>
+            <div class="search-filter-icon" @click="resetFilters">
+              <i class="fa-solid fa-arrows-rotate"></i>
             </div>
           </div>
         </div>
@@ -139,67 +134,169 @@
         <div class="search-btn">
           <q-btn label="검색" color="primary" @click="searchSaving()"></q-btn>
         </div>
-        <div class="sideBanner">
-          <div class="sideTitle">총 합계 보기</div>
+        <div class="sideBanner" v-if="visible">
+          <div v-if="visible_extra">
+            <p>입력한 월 납입 금액으로 가입한 상품 요약</p>
+          </div>
+          <div class="sideTitle">적금 요약</div>
           <div class="sideContent">
             <ul class="txt_side">
-              <li class="txt_1 stxt">원가 합계</li>
+              <li class="txt_1 stxt">원금 합계</li>
               <li class="txt_2 stxt">세전이자 합계</li>
               <li class="txt_3 stxt">이자과세 합계</li>
               <li class="txt_4 stxt">세후수령액 합계</li>
             </ul>
             <ul class="numb_side">
-              <li class="numb_1 snumb">4,000,000</li>
-              <li class="numb_2 snumb">500,000</li>
-              <li class="numb_3 snumb">34,000</li>
-              <li class="numb_4 snumb">50,000,000</li>
+              <li class="numb_1 snumb">
+                {{ total_sum.toLocaleString() }} 원
+                <p class="sub-price">
+                  (한 달 {{ month_amount.toLocaleString() }} 원)
+                </p>
+              </li>
+              <li class="numb_2 snumb">
+                {{ total_interest.toLocaleString() }} 원
+              </li>
+              <li class="numb_3 snumb">{{ total_tax.toLocaleString() }} 원</li>
+              <li class="numb_4 snumb">
+                {{ total_final_amount.toLocaleString() }} 원
+              </li>
+            </ul>
+          </div>
+
+          <div class="sideTitle">추가 적금 요약</div>
+          <div class="sideContent">
+            <ul class="txt_side">
+              <li class="txt_1 stxt">원금 합계</li>
+              <li class="txt_2 stxt">세전이자 합계</li>
+              <li class="txt_3 stxt">이자과세 합계</li>
+              <li class="txt_4 stxt">세후수령액 합계</li>
+            </ul>
+            <ul class="numb_side">
+              <li class="numb_1 snumb">
+                {{ (extra_sum.extra_total_sum || 0).toLocaleString() }} 원
+                <p class="sub-price">
+                  (한 달
+                  {{ (extra_sum.extra_month_amount || 0).toLocaleString() }} 원)
+                </p>
+              </li>
+              <li class="numb_2 snumb">
+                {{ (extra_sum.extra_total_interest || 0).toLocaleString() }} 원
+              </li>
+              <li class="numb_3 snumb">
+                {{ (extra_sum.extra_total_tax || 0).toLocaleString() }} 원
+              </li>
+              <li class="numb_4 snumb">
+                {{
+                  (extra_sum.extra_total_final_amount || 0).toLocaleString()
+                }}
+                원
+              </li>
             </ul>
           </div>
         </div>
       </div>
 
-      <div class="txt-saving">선택하신 조건에 맞는 적금입니다.</div>
-      <div
-        class="box-saving result"
-        v-for="(item, idx) in resultDeposit"
-        :key="idx"
-      >
-        <div class="saving-top">
-          <div class="top-left">
-            <div class="saving-img">
-              <img
-                :src="item.deposit.companylogourl"
-                alt=""
-                class="deposit-img"
-              />
+      <div v-if="result_visible">
+        <div class="txt-saving">선택하신 조건에 맞는 적금입니다.</div>
+        <div
+          class="box-saving result"
+          v-for="(item, idx) in resultDeposit"
+          :key="idx"
+          @click="goDepositDetail(item.deposit.code)"
+        >
+          <div class="saving-top">
+            <div class="top-left">
+              <div class="saving-img">
+                <img
+                  :src="item.deposit.companylogourl"
+                  alt=""
+                  class="deposit-img"
+                />
+              </div>
+              <div class="saving-tit">
+                <p class="saving-name">{{ item.deposit.name }}</p>
+                <p class="bank-name">{{ item.deposit.companyName }}</p>
+              </div>
             </div>
-            <div class="saving-tit">
-              <p class="saving-name">{{ item.deposit.name }}</p>
-              <p class="bank-name">{{ item.deposit.companyName }}</p>
+            <div class="top-right">
+              금리
+              <span class="max-rate"
+                >{{ item.deposit.primeInterestRate }}%</span
+              >
             </div>
           </div>
-          <div class="top-right">
-            금리
-            <span class="max-rate">{{ item.deposit.primeInterestRate }}%</span>
+          <div class="saving-bott">
+            <div class="box-tot-price">
+              <p>원금 합계</p>
+              <p class="tot-price">{{ item.m_원금.toLocaleString() }}원</p>
+            </div>
+            <div class="box-bef-int">
+              <p>세전 이자</p>
+              <p class="bef-int">+{{ item.m_이자.toLocaleString() }}원</p>
+            </div>
+            <div class="box-int-tax">
+              <p>이자과세(15.4%)</p>
+              <p class="int-tax">-{{ item.m_세금.toLocaleString() }}원</p>
+            </div>
+            <div class="line"></div>
+            <div class="box-aft-tax">
+              <p>세후수령액</p>
+              <p class="aft-tax">{{ item.m_만기금액.toLocaleString() }}원</p>
+            </div>
           </div>
         </div>
-        <div class="saving-bott">
-          <div class="box-tot-price">
-            <p>원금 합계</p>
-            <p class="tot-price">{{ item.m_원금.toLocaleString() }}원</p>
+      </div>
+      <!-- 추가 상품 -->
+      <div v-if="visible_extra">
+        <div class="txt-saving">목표 금액 달성을 위한 추가 상품</div>
+        <div
+          class="box-saving result"
+          v-for="(item, idx) in extra_deposit"
+          :key="idx"
+          @click="goDepositDetail(item.deposit.code)"
+        >
+          <p class="extra-deposit-top">
+            해당 상품은 목표 달성을 위한 추가 상품입니다.
+          </p>
+          <div class="saving-top">
+            <div class="top-left">
+              <div class="saving-img">
+                <img
+                  :src="item.deposit.companylogourl"
+                  alt=""
+                  class="deposit-img"
+                />
+              </div>
+              <div class="saving-tit">
+                <p class="saving-name">{{ item.deposit.name }}</p>
+                <p class="bank-name">{{ item.deposit.companyName }}</p>
+              </div>
+            </div>
+            <div class="top-right">
+              금리
+              <span class="max-rate"
+                >{{ item.deposit.primeInterestRate }}%</span
+              >
+            </div>
           </div>
-          <div class="box-bef-int">
-            <p>세전 이자</p>
-            <p class="bef-int">+{{ item.m_이자.toLocaleString() }}원</p>
-          </div>
-          <div class="box-int-tax">
-            <p>이자과세(15.4%)</p>
-            <p class="int-tax">-{{ item.m_세금.toLocaleString() }}원</p>
-          </div>
-          <div class="line"></div>
-          <div class="box-aft-tax">
-            <p>세후수령액</p>
-            <p class="aft-tax">{{ item.m_만기금액.toLocaleString() }}원</p>
+          <div class="saving-bott">
+            <div class="box-tot-price">
+              <p>원금 합계</p>
+              <p class="tot-price">{{ item.m_원금.toLocaleString() }}원</p>
+            </div>
+            <div class="box-bef-int">
+              <p>세전 이자</p>
+              <p class="bef-int">+{{ item.m_이자.toLocaleString() }}원</p>
+            </div>
+            <div class="box-int-tax">
+              <p>이자과세(15.4%)</p>
+              <p class="int-tax">-{{ item.m_세금.toLocaleString() }}원</p>
+            </div>
+            <div class="line"></div>
+            <div class="box-aft-tax">
+              <p>세후수령액</p>
+              <p class="aft-tax">{{ item.m_만기금액.toLocaleString() }}원</p>
+            </div>
           </div>
         </div>
       </div>
@@ -425,19 +522,115 @@ watch(
 
 const resultDeposit = ref({});
 
+const total_sum = ref(0);
+const total_interest = ref(0);
+const total_tax = ref(0);
+const total_final_amount = ref(0);
+const month_amount = ref(0);
+
+const visible = ref(false);
+
+const result_visible = ref(false);
+
+const extra_sum = ref({
+  extra_total_sum: 0,
+  extra_total_interest: 0,
+  extra_total_tax: 0,
+  extra_total_final_amount: 0,
+  extra_month_amount: 0,
+});
+
+// 초기화 함수
+const resetFilters = () => {
+  resetAmount();
+  selectedPeriod.value = "";
+  selectedOptions.value = {
+    age: "",
+    weak: "",
+    child: "",
+    business: "",
+    military: "",
+  };
+  Post_options.value = {
+    period: "",
+    targetAmount: "",
+    mainBank: "",
+    monthlyAmount: 0,
+    business: "N",
+    children: "N",
+    vulnerableSocialGroup: "N",
+    young: "N",
+    old: "N",
+    soldier: "N",
+  };
+};
+
+const extra_deposit = ref({});
+
+const visible_extra = ref(false);
+
 const searchSaving = async () => {
+  $q.loading.show({
+    message: "맞춤 적금을 분석중입니다. 잠시만 기다려 주세요.",
+    delay: 400, // ms
+  });
+
   // Post_options.value.period string 변환
   Post_options.value.period = Post_options.value.period.toString();
+  Post_options.value.monthlyAmount = Post_options.value.monthlyAmount * 10000;
+
+  if (
+    Post_options.value.period === "" ||
+    Post_options.value.targetAmount === ""
+  ) {
+    $q.notify({
+      color: "negative",
+      position: "center",
+      message: "필수 항목을 입력해주세요.",
+    });
+    return;
+  }
 
   console.log("Post_options", Post_options.value);
 
   const url = `${process.env.API}/v1/bank/recommand/deposit`;
 
   await api.post(url, Post_options.value).then((res) => {
+    result_visible.value = true;
+    visible.value = true;
     console.log("결과값", res);
 
     resultDeposit.value = res.data.result;
-    fun1();
+    total_sum.value = res.data.total_sum;
+    total_interest.value = res.data.total_interest;
+    total_tax.value = res.data.total_tax;
+    total_final_amount.value = res.data.total_final_amount;
+    month_amount.value = res.data.month_amount;
+
+    if (
+      Array.isArray(res.data.extra_deposit) &&
+      res.data.extra_deposit.length > 0
+    ) {
+      visible_extra.value = true;
+    }
+
+    extra_deposit.value = res.data.extra_deposit;
+
+    extra_sum.value.extra_total_sum = res.data.extra_total_sum;
+    extra_sum.value.extra_total_interest = res.data.extra_total_interest;
+    extra_sum.value.extra_total_tax = res.data.extra_total_tax;
+    extra_sum.value.extra_total_final_amount =
+      res.data.extra_total_final_amount;
+    extra_sum.value.extra_month_amount = res.data.extra_month_amount;
+
+    $q.loading.hide();
+  });
+};
+
+const goDepositDetail = (detailId) => {
+  console.log("detailId", detailId);
+  $router.push({
+    path: `/deposit/DepositDetail/${detailId}`,
   });
 };
 
@@ -453,6 +646,7 @@ const searchSaving = async () => {
   border-radius: 10px;
   padding: 42px 0 42px 44px;
   margin: 0 auto;
+  cursor: pointer;
 }
 
 p.info-title {
@@ -695,5 +889,23 @@ ul.txt_side {
   display: flex;
   flex-direction: column;
   gap: 15px;
+}
+.search-filter-icon {
+  // border: 1px solid #e5e8ed;
+  // color: #767676;
+  padding: 6px;
+  width: 32px;
+  height: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 4px;
+  cursor: pointer;
+}
+.extra-deposit-top {
+  margin-bottom: 20px;
+  color: green;
+  font-weight: 900;
+  border-bottom: solid 1px green;
 }
 </style>

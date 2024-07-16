@@ -835,8 +835,8 @@ const removeFilter = (type, index = null) => {
   cursor: pointer;
 }
 .search-filter-icon {
-  border: 1px solid #e5e8ed;
-  color: #767676;
+  // border: 1px solid #e5e8ed;
+  // color: #767676;
   padding: 6px;
   width: 32px;
   height: 32px;
