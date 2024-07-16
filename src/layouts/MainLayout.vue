@@ -168,25 +168,24 @@
     <q-page-container>
       <router-view />
     </q-page-container>
+    <footer>
+      <div class="foot_title">Mokdon</div>
+      <div class="foot_content">
+        <div>고객센터</div>
+        <div>문의사항</div>
+        <div>사업문의</div>
+        <div>자주 묻는 질문</div>
+        <div>목돈에 대하여</div>
+      </div>
+      <div class="foot_info">
+        <div>(주)목돈컴퍼니</div>
+        <div>대표이사 : 김선우</div>
+        <div>사업자 등록번호 : 800-80-08888</div>
+        <div>서울특별시 강남구 자곡로 260 5층</div>
+        <div>광고/제휴문의 : rlatjsdn@naver.com</div>
+      </div>
+    </footer>
   </q-layout>
-
-  <footer>
-    <div class="foot_title">Mokdon</div>
-    <div class="foot_content">
-      <div>고객센터</div>
-      <div>문의사항</div>
-      <div>사업문의</div>
-      <div>자주 묻는 질문</div>
-      <div>목돈에 대하여</div>
-    </div>
-    <div class="foot_info">
-      <div>(주)목돈컴퍼니</div>
-      <div>대표이사 : 김선우</div>
-      <div>사업자 등록번호 : 800-80-08888</div>
-      <div>서울특별시 강남구 자곡로 260 5층</div>
-      <div>광고/제휴문의 : rlatjsdn@naver.com</div>
-    </div>
-  </footer>
 </template>
 
 <script setup>
@@ -297,7 +296,6 @@ footer {
   color: white;
   text-align: center;
   padding: 40px 0;
-  margin-top: 70px;
 }
 
 .foot_title {
