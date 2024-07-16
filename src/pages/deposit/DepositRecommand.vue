@@ -186,9 +186,7 @@
                 {{ (extra_sum.extra_total_tax || 0).toLocaleString() }} 원
               </li>
               <li class="numb_4 snumb">
-                {{
-                  (extra_sum.extra_total_final_amount || 0).toLocaleString()
-                }}
+                {{ (extra_sum.extra_total_final_amount || 0).toLocaleString() }}
                 원
               </li>
             </ul>
@@ -246,18 +244,17 @@
           </div>
         </div>
       </div>
+      <div class="plus-btn" v-if="visible_extra" @click="func_plus()">
+        <i class="fa-solid fa-arrow-down"></i>
+      </div>
       <!-- 추가 상품 -->
-      <div v-if="visible_extra">
-        <div class="txt-saving">목표 금액 달성을 위한 추가 상품</div>
+      <div v-if="extra_btn">
         <div
           class="box-saving result"
           v-for="(item, idx) in extra_deposit"
           :key="idx"
           @click="goDepositDetail(item.deposit.code)"
         >
-          <p class="extra-deposit-top">
-            해당 상품은 목표 달성을 위한 추가 상품입니다.
-          </p>
           <div class="saving-top">
             <div class="top-left">
               <div class="saving-img">
@@ -270,6 +267,9 @@
               <div class="saving-tit">
                 <p class="saving-name">{{ item.deposit.name }}</p>
                 <p class="bank-name">{{ item.deposit.companyName }}</p>
+                <p class="top-middle">
+                  * 해당 상품은 목표 달성을 위한 추가 상품입니다.
+                </p>
               </div>
             </div>
             <div class="top-right">
@@ -634,6 +634,16 @@ const goDepositDetail = (detailId) => {
   });
 };
 
+const extra_btn = ref(false);
+
+const func_plus = () => {
+  if (visible_extra.value) {
+    extra_btn.value = true;
+  } else {
+    extra_btn.value = false;
+  }
+};
+
 // 사이드 배너
 </script>
 
@@ -741,6 +751,11 @@ p.info-title {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+}
+
+.top-middle {
+  font-size: 12px;
+  color: #7d7d7d;
 }
 
 .saving-img {
@@ -907,5 +922,20 @@ ul.txt_side {
   color: green;
   font-weight: 900;
   border-bottom: solid 1px green;
+}
+
+.plus-btn {
+  width: 90%;
+  background-color: #dfdfdf;
+  border-radius: 7px;
+  margin: 0 auto;
+  line-height: 35px;
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+}
+
+i.fa-solid.fa-arrow-down {
+  color: #343535;
 }
 </style>

@@ -1,7 +1,8 @@
 <template>
   <q-layout class="page-container page-background">
     <q-page class="common-container">
-      <section class="page-section">
+      <div class="card-txt htxt">카드</div>
+      <section class="page-section cardDetail">
         <div class="card-img-wrap">
           <div class="card-img-box">
             <img
@@ -13,9 +14,15 @@
         </div>
         <article class="card-detail-article">
           <div class="card-content">
-            연회비
-            <p><span>국내</span>{{ cardDetail.domesticAnnualFee }}원</p>
-            <p><span>해외</span>{{ cardDetail.foreignAnnualFee }}원</p>
+            <span>연회비</span>
+            <div class="kor-int">
+              <div class="kor-box">
+                국내 <span class="kor-pay">10,000원</span>
+              </div>
+              <div class="int-box">
+                해외 <span class="int-pay">15,000원</span>
+              </div>
+            </div>
           </div>
         </article>
         <article class="card-detail-article">
@@ -32,30 +39,23 @@
           </div>
         </article>
       </section>
-      <section class="page-section">
-        <div class="benefits-title">🎁 주요 혜택</div>
-        <ul class="benefits-wrap">
-          <li
-            class="benefits-list"
-            v-for="(benefit, index) in cardDetail.benefits"
-            :key="index"
-          >
-            <div class="benefit-icon-wrap">
-              <img
-                :src="benefit.iconFileNameUrl"
-                class="card-img"
-                alt="카드 이미지"
-              />
-            </div>
-            <p>{{ benefit.rootBenefitCategoryIdName }}</p>
-          </li>
+      <div class="benef-txt htxt">주요 혜택</div>
+      <div class="benef b1">
+        <div>연회비지원</div>
+        <ul>
+          <li></li>
+          <li></li>
         </ul>
-      </section>
-
-      <section class="page-section">
-        <!-- <div class="benefits-title">🎁 상세 혜택</div> -->
-        <div class="benefits-title">한 달에 이만큼 혜택 받아요</div>
-
+      </div>
+      <div class="benef b2">
+        <div>쇼핑</div>
+        <ul>
+          <li></li>
+          <li></li>
+        </ul>
+      </div>
+      <div class="last-txt htxt">전월실적</div>
+      <section class="page-section lastGoal">
         <div v-if="checkAmount">
           <div class="discount-box">
             <div class="discount-text">
@@ -98,9 +98,8 @@
         </div>
       </section>
 
+      <div class="cinfo-txt htxt">카드 정보</div>
       <section class="page-section">
-        <div class="benefits-title">💳 카드 정보</div>
-
         <ul>
           <li
             class="info-content"
@@ -310,10 +309,12 @@ const goApplication = () => {
 }
 .card-benefit {
   font-size: 16px;
-  color: rgba(100, 109, 122);
+  color: #888888;
+  font-weight: bolder;
 }
 .card-content {
   // padding: 20px;
+  flex-direction: column;
   display: flex;
   justify-content: center;
   gap: 4px;
@@ -506,5 +507,31 @@ const goApplication = () => {
 }
 .sub-amount-text {
   margin-top: 10px;
+}
+
+.kor-box,
+.int-box {
+  background-color: #efefef;
+  border-radius: 3px;
+  color: #757575;
+  padding: 0 6px;
+}
+
+.kor-int {
+  display: flex;
+  flex-direction: row;
+  margin: 0 auto;
+  gap: 15px;
+}
+
+.page-section.cardDetail {
+  padding: 55px 0;
+}
+
+.htxt {
+  font-size: 24px;
+  font-weight: bolder;
+  color: #000000;
+  margin-top: 40px;
 }
 </style>
