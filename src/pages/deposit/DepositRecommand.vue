@@ -245,6 +245,7 @@
         </div>
       </div>
       <div class="plus-btn" v-if="visible_extra" @click="func_plus()">
+        목표 달성을 위한 추가 상품 확인하기
         <i class="fa-solid fa-arrow-down"></i>
       </div>
       <!-- 추가 상품 -->
@@ -926,13 +927,14 @@ ul.txt_side {
 
 .plus-btn {
   width: 90%;
-  background-color: #dfdfdf;
+  background-color: #efae1a;
   border-radius: 7px;
   margin: 0 auto;
   line-height: 35px;
   margin-top: 10px;
   text-align: center;
   cursor: pointer;
+  font-weight: 800;
 }
 
 i.fa-solid.fa-arrow-down {
