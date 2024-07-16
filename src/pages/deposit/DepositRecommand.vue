@@ -136,7 +136,7 @@
         </div>
         <div class="sideBanner" v-if="visible">
           <div v-if="visible_extra">
-            <p>입력한 월 납입 금액으로 가입한 상품 요약</p>
+            <p>월 납입 금액 가입 가능 상품 요약</p>
           </div>
           <div class="sideTitle">적금 요약</div>
           <div class="sideContent">
@@ -162,34 +162,42 @@
               </li>
             </ul>
           </div>
-
-          <div class="sideTitle">추가 적금 요약</div>
-          <div class="sideContent">
-            <ul class="txt_side">
-              <li class="txt_1 stxt">원금 합계</li>
-              <li class="txt_2 stxt">세전이자 합계</li>
-              <li class="txt_3 stxt">이자과세 합계</li>
-              <li class="txt_4 stxt">세후수령액 합계</li>
-            </ul>
-            <ul class="numb_side">
-              <li class="numb_1 snumb">
-                {{ (extra_sum.extra_total_sum || 0).toLocaleString() }} 원
-                <p class="sub-price">
-                  (한 달
-                  {{ (extra_sum.extra_month_amount || 0).toLocaleString() }} 원)
-                </p>
-              </li>
-              <li class="numb_2 snumb">
-                {{ (extra_sum.extra_total_interest || 0).toLocaleString() }} 원
-              </li>
-              <li class="numb_3 snumb">
-                {{ (extra_sum.extra_total_tax || 0).toLocaleString() }} 원
-              </li>
-              <li class="numb_4 snumb">
-                {{ (extra_sum.extra_total_final_amount || 0).toLocaleString() }}
-                원
-              </li>
-            </ul>
+          <div class="extra-sum" v-if="summary" @click="summary_func('열기')">
+            <p>추가 적금 요약 펼치기</p>
+          </div>
+          <div class="extra-summary" v-if="visible_summary">
+            <div class="sideTitle">추가 적금 요약</div>
+            <div class="sideContent">
+              <ul class="txt_side">
+                <li class="txt_1 stxt">원금 합계</li>
+                <li class="txt_2 stxt">세전이자 합계</li>
+                <li class="txt_3 stxt">이자과세 합계</li>
+                <li class="txt_4 stxt">세후수령액 합계</li>
+              </ul>
+              <ul class="numb_side">
+                <li class="numb_1 snumb">
+                  {{ (extra_sum.extra_total_sum || 0).toLocaleString() }} 원
+                  <p class="sub-price">
+                    (한 달
+                    {{ (extra_sum.extra_month_amount || 0).toLocaleString() }}
+                    원)
+                  </p>
+                </li>
+                <li class="numb_2 snumb">
+                  {{ (extra_sum.extra_total_interest || 0).toLocaleString() }}
+                  원
+                </li>
+                <li class="numb_3 snumb">
+                  {{ (extra_sum.extra_total_tax || 0).toLocaleString() }} 원
+                </li>
+                <li class="numb_4 snumb">
+                  {{
+                    (extra_sum.extra_total_final_amount || 0).toLocaleString()
+                  }}
+                  원
+                </li>
+              </ul>
+            </div>
           </div>
         </div>
       </div>
@@ -244,7 +252,7 @@
           </div>
         </div>
       </div>
-      <div class="plus-btn" v-if="visible_extra" @click="func_plus()">
+      <div class="plus-btn" v-if="visible_extra" @click="open_plus('열기')">
         목표 달성을 위한 추가 상품 확인하기
         <i class="fa-solid fa-arrow-down"></i>
       </div>
@@ -300,6 +308,10 @@
             </div>
           </div>
         </div>
+      </div>
+      <div class="plus-btn" v-if="close_extra" @click="open_plus('닫기')">
+        목표 달성을 위한 추가 상품 접기
+        <i class="fa-solid fa-arrow-up"></i>
       </div>
     </q-page>
   </q-layout>
@@ -636,12 +648,30 @@ const goDepositDetail = (detailId) => {
 };
 
 const extra_btn = ref(false);
+const close_extra = ref(false);
 
-const func_plus = () => {
-  if (visible_extra.value) {
+const open_plus = (value) => {
+  if (value == "열기") {
     extra_btn.value = true;
-  } else {
+    visible_extra.value = false;
+    close_extra.value = true;
+  } else if (value == "닫기") {
     extra_btn.value = false;
+    visible_extra.value = true;
+    close_extra.value = false;
+  }
+};
+
+const summary = ref(true);
+
+const visible_summary = ref(false);
+
+const summary_func = (value) => {
+  if (value == "열기") {
+    visible_summary.value = true;
+    summary.value = false;
+  } else if (value == "닫기") {
+    visible_summary.value = false;
   }
 };
 
@@ -939,5 +969,16 @@ ul.txt_side {
 
 i.fa-solid.fa-arrow-down {
   color: #343535;
+}
+.extra-sum {
+  width: 90%;
+  background-color: #efae1a;
+  border-radius: 7px;
+  margin: 0 auto;
+  line-height: 35px;
+  margin-top: 10px;
+  text-align: center;
+  cursor: pointer;
+  font-weight: 800;
 }
 </style>
