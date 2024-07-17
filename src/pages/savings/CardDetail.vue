@@ -41,17 +41,21 @@
       </section>
       <div class="benef-txt htxt">주요 혜택</div>
       <div class="benef b1">
-        <div>연회비지원</div>
-        <ul>
-          <li></li>
-          <li></li>
+        <div class="b1-txt">연회비지원</div>
+        <ul class="b1-list">
+          <li class="f-benef">
+            - 롯데백화점 15% 청구할인 서비스롯데백화점 5% 현장할인 e-쿠폰 제공
+          </li>
+          <li class="s-benef">- 롯데백화점 12개월 할부 서비스</li>
         </ul>
       </div>
       <div class="benef b2">
-        <div>쇼핑</div>
-        <ul>
-          <li></li>
-          <li></li>
+        <div class="b2-txt">쇼핑</div>
+        <ul class="b2-list">
+          <li class="f-benef">
+            - 롯데백화점 15% 청구할인 서비스롯데백화점 5% 현장할인 e-쿠폰 제공
+          </li>
+          <li class="s-benef">- 롯데백화점 12개월 할부 서비스</li>
         </ul>
       </div>
       <div class="last-txt htxt">전월실적</div>
@@ -83,18 +87,13 @@
             </button>
           </div>
         </div>
-
-        <div
-          class="benefits-box"
-          v-for="(item, index) in cardDetailInfo.benefit"
-          :key="index"
-        >
-          <div class="title-box">
-            {{ item.title }}
-          </div>
-          <div class="description-box">
-            {{ item.content }}
-          </div>
+        <div class="last-box">
+          <div class="last-txt"></div>
+          <ul class="last-numb">
+            <li></li>
+            <li></li>
+            <li></li>
+          </ul>
         </div>
       </section>
 
@@ -533,5 +532,39 @@ const goApplication = () => {
   font-weight: bolder;
   color: #000000;
   margin-top: 40px;
+  padding-left: 12px;
+}
+
+.b1-txt,
+.b2-txt {
+  width: 100%;
+  background-color: #ffffff;
+  border-radius: 9px;
+  line-height: 67px;
+  font-size: 18px;
+  font-family: "Noto Sans KR";
+  padding-left: 50px;
+}
+
+ul.b1-list,
+ul.b2-list {
+  width: 100%;
+  background-color: #ffffff;
+  margin-top: -10px;
+  padding: 20px 0 27px 27px;
+  border-radius: 0 0 9px 9px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.benef.b1 {
+  margin-bottom: 20px;
+}
+
+.last-numb {
+  background-color: #dedede;
+  border-radius: 50px;
+  width: 100%;
 }
 </style>
