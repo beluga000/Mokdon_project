@@ -648,7 +648,7 @@ const goInstalmentDetail = (detailId) => {
 }
 
 .application-section {
-  background-color: #efae1a;
+  background-color: #fd6102;
   color: #ffffff;
   padding: 0;
   position: fixed;
@@ -818,7 +818,7 @@ const goInstalmentDetail = (detailId) => {
 }
 .rate-sperate.selected .rate-label {
   background-color: #f0f8ff;
-  border-color: #efae1a;
+  border-color: #fd6102;
 }
 .description_area {
   margin-top: 20px;
@@ -900,7 +900,7 @@ const goInstalmentDetail = (detailId) => {
   padding: 0 8px; /* 항목의 좌우 여백 추가 */
   line-height: 26px; /* 항목의 높이 */
   text-align: center; /* 텍스트 중앙 정렬 */
-  color: #efae1a;
+  color: #fd6102;
   background-color: #dcf2ff;
 }
 
@@ -910,8 +910,8 @@ const goInstalmentDetail = (detailId) => {
   display: flex;
   justify-content: center;
   align-items: center;
-  color: #efae1a;
-  background-color: #dcf2ff;
+  color: #a4a4a4;
+  background-color: #ededed;
 }
 
 .main_cate.c2 {
@@ -1008,7 +1008,7 @@ section.main_info {
 
 .year_best div,
 .year_ideal div {
-  color: #efae1a;
+  color: #fd6102;
   font-weight: bold;
   font-size: 30px;
   font-family: "Pretendard";
@@ -1154,6 +1154,6 @@ div.before {
 }
 .InterestRateReceipt_info-desc {
   font-weight: bold;
-  color: #efae1a;
+  color: #fd6102;
 }
 </style>

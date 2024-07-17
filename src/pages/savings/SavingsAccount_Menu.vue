@@ -622,15 +622,20 @@ const product = ref({ cards: [] });
 const arrCompany = ["BC", "SS", "SH", "HD", "KB", "LO", "SK", "NH", "IB"];
 
 const CardList = async (menu_to_benefit) => {
+  // if (menu_to_benefit) {
+  //   arrCompany.forEach((company) => {
+  //     if (menu_to_benefit === company) {
+  //       searchForm.value.code = company;
+  //     } else {
+  //       cardBenefits.push(menu_to_benefit);
+  //       changeSearchForm("benefits", cardBenefits.join(","));
+  //     }
+  //   });
+  // }
+
   if (menu_to_benefit) {
-    arrCompany.forEach((company) => {
-      if (menu_to_benefit === company) {
-        searchForm.value.code = company;
-      } else {
-        cardBenefits.push(menu_to_benefit);
-        changeSearchForm("benefits", cardBenefits.join(","));
-      }
-    });
+    cardBenefits.push(menu_to_benefit);
+    changeSearchForm("benefits", cardBenefits.join(","));
   }
 
   console.log("..?");

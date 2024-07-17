@@ -100,7 +100,7 @@
         </q-dialog>
         <div class="max-amount-wrapper">
           <div class="txt-max">
-            <p>납입 최대 금액</p>
+            <p>월 납입 가능 금액</p>
             <span>(선택)</span>
           </div>
           <div class="input-amount">
@@ -132,7 +132,11 @@
           </div>
         </div>
         <div class="search-btn">
-          <q-btn label="검색" color="primary" @click="searchSaving()"></q-btn>
+          <q-btn
+            label="검색"
+            class="search-btn-item"
+            @click="searchSaving()"
+          ></q-btn>
         </div>
         <div class="sideBanner" v-if="visible">
           <div v-if="visible_extra">
@@ -220,18 +224,27 @@
                 />
               </div>
               <div class="saving-tit">
-                <p class="saving-name">{{ item.deposit.name }}</p>
+                <p class="saving-name">
+                  {{ item.deposit.name }} ({{
+                    item.deposit.product_period
+                  }}개월)
+                </p>
                 <p class="bank-name">{{ item.deposit.companyName }}</p>
               </div>
             </div>
             <div class="top-right">
-              금리
-              <span class="max-rate"
-                >{{ item.deposit.primeInterestRate }}%</span
+              <p class="rate-text">금리</p>
+              <span class="max-rate">
+                {{ item.deposit.primeInterestRate }}%</span
               >
             </div>
           </div>
           <div class="saving-bott">
+            <!-- 삭제 예정 테스트용 -->
+            <p style="font-weight: 900">
+              매월{{ item.m_월납입금.toLocaleString() }}
+            </p>
+            <!-- 삭제 예정 테스트용 -->
             <div class="box-tot-price">
               <p>원금 합계</p>
               <p class="tot-price">{{ item.m_원금.toLocaleString() }}원</p>
@@ -309,7 +322,11 @@
           </div>
         </div>
       </div>
-      <div class="plus-btn" v-if="close_extra" @click="open_plus('닫기')">
+      <div
+        class="plus-btn close-btn"
+        v-if="close_extra"
+        @click="open_plus('닫기')"
+      >
         목표 달성을 위한 추가 상품 접기
         <i class="fa-solid fa-arrow-up"></i>
       </div>
@@ -583,10 +600,10 @@ const extra_deposit = ref({});
 const visible_extra = ref(false);
 
 const searchSaving = async () => {
-  $q.loading.show({
-    message: "맞춤 적금을 분석중입니다. 잠시만 기다려 주세요.",
-    delay: 400, // ms
-  });
+  // $q.loading.show({
+  //   message: "맞춤 적금을 분석중입니다. 잠시만 기다려 주세요.",
+  //   delay: 400, // ms
+  // });
 
   // Post_options.value.period string 변환
   Post_options.value.period = Post_options.value.period.toString();
@@ -609,6 +626,7 @@ const searchSaving = async () => {
   const url = `${process.env.API}/v1/bank/recommand/deposit`;
 
   await api.post(url, Post_options.value).then((res) => {
+    Post_options.value.monthlyAmount = Post_options.value.monthlyAmount / 10000;
     result_visible.value = true;
     visible.value = true;
     console.log("결과값", res);
@@ -625,6 +643,7 @@ const searchSaving = async () => {
       res.data.extra_deposit.length > 0
     ) {
       visible_extra.value = true;
+      summary.value = true;
     }
 
     extra_deposit.value = res.data.extra_deposit;
@@ -636,7 +655,7 @@ const searchSaving = async () => {
       res.data.extra_total_final_amount;
     extra_sum.value.extra_month_amount = res.data.extra_month_amount;
 
-    $q.loading.hide();
+    // $q.loading.hide();
   });
 };
 
@@ -662,7 +681,7 @@ const open_plus = (value) => {
   }
 };
 
-const summary = ref(true);
+const summary = ref(false);
 
 const visible_summary = ref(false);
 
@@ -687,7 +706,7 @@ const summary_func = (value) => {
   border-radius: 10px;
   padding: 42px 0 42px 44px;
   margin: 0 auto;
-  cursor: pointer;
+  // cursor: pointer;
 }
 
 p.info-title {
@@ -870,6 +889,8 @@ p.info-title {
   display: flex;
   justify-content: center;
   padding-top: 10px;
+  font-weight: 900;
+  color: #1049de;
 }
 
 .active {
@@ -889,6 +910,11 @@ p.info-title {
   display: flex;
   justify-content: center;
   margin-top: 30px;
+  // background-color: #fd6102;
+}
+.search-btn-item {
+  background-color: #fd6102;
+  color: #ffffff;
 }
 
 button.q-btn.q-btn-item.non-selectable.no-outline.q-btn--standard.q-btn--rectangle.bg-primary.text-white.q-btn--actionable.q-focusable.q-hoverable {
@@ -980,5 +1006,14 @@ i.fa-solid.fa-arrow-down {
   text-align: center;
   cursor: pointer;
   font-weight: 800;
+}
+.close-btn {
+  margin-bottom: 40px;
+}
+p.rate-text {
+  margin-right: 3px;
+}
+.sub-price {
+  font-size: 12px;
 }
 </style>

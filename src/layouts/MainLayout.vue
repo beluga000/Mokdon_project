@@ -43,7 +43,9 @@
               <div class="event-img">
                 <img src="~src/img/vault.svg" alt="vault 이미지" />
               </div>
-              <button class="btn event-btn">최고금리 예/적금 조회</button>
+              <button class="btn event-btn" @click="goMenu('적금추천')">
+                맞춤형 상품 추천
+              </button>
             </article>
             <article class="menu-item-list">
               <section>
@@ -296,6 +298,7 @@ footer {
   color: white;
   text-align: center;
   padding: 40px 0;
+  margin-top: 20px;
 }
 
 .foot_title {

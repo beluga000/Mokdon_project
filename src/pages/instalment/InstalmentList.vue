@@ -535,16 +535,16 @@ const select_period = (month) => {
 
   // 클릭된 막대의 색상을 변경합니다.
   if (month === "6개월") {
-    document.querySelector(".bar_1").style.backgroundColor = "#EFAE1A";
+    document.querySelector(".bar_1").style.backgroundColor = "#fd6102";
     changeSearchForm("period", "6");
   } else if (month === "12개월") {
-    document.querySelector(".bar_1").style.backgroundColor = "#EFAE1A";
-    document.querySelector(".bar_2").style.backgroundColor = "#EFAE1A";
+    document.querySelector(".bar_1").style.backgroundColor = "#fd6102";
+    document.querySelector(".bar_2").style.backgroundColor = "#fd6102";
     changeSearchForm("period", "12");
   } else if (month === "24개월 이상") {
-    document.querySelector(".bar_1").style.backgroundColor = "#EFAE1A";
-    document.querySelector(".bar_2").style.backgroundColor = "#EFAE1A";
-    document.querySelector(".bar_3").style.backgroundColor = "#EFAE1A";
+    document.querySelector(".bar_1").style.backgroundColor = "#fd6102";
+    document.querySelector(".bar_2").style.backgroundColor = "#fd6102";
+    document.querySelector(".bar_3").style.backgroundColor = "#fd6102";
     changeSearchForm("period", "전체");
   } else {
     document.querySelector(".bar_1").style.backgroundColor = "#e8ebef";
@@ -920,12 +920,12 @@ const resetFilters = () => {
   width: 24px;
   height: 22px;
   background-color: white;
-  border: 5px solid #efae1a;
+  border: 5px solid #fd6102;
   border-radius: 50px;
 }
 
 #whole {
-  color: #efae1a;
+  color: #fd6102;
   font-weight: bold;
   position: absolute;
   transform: translate(109px, 44px);
@@ -1019,7 +1019,7 @@ div#month_24 {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.3px;
-  color: #efae1a;
+  color: #fd6102;
   display: flex;
   gap: 3px;
 }
@@ -1040,8 +1040,8 @@ div#month_24 {
 }
 
 .bank-condi.c1 {
-  background-color: #e5f3fe;
-  color: #efae1a;
+  background-color: #ededed;
+  color: #a4a4a4;
 }
 
 .bank-condi.c2 {

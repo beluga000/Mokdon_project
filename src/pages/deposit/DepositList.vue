@@ -20,7 +20,7 @@
           >
             <q-tab class="tab-item" @click="selectBank('KB국민은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank1">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_KB_Profile.png"
                     alt="국민은행"
@@ -33,7 +33,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('신한은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank2">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_SHINHAN_Profile.png"
                     alt="신한은행"
@@ -46,7 +46,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('하나은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank3">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_SHINHAN_Profile.png"
                     alt="하나은행"
@@ -59,7 +59,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('우리은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank4">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_WOORI_Profile.png"
                     alt="우리은행"
@@ -72,7 +72,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('IBK기업은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank5">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_IBK_Profile.png"
                     alt="기업은행"
@@ -85,7 +85,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('KDB산업은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank6">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_KDB_Profile.png"
                     alt="산업은행"
@@ -108,7 +108,7 @@
       </q-tab> -->
             <q-tab class="tab-item" @click="selectBank('SC제일은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank7">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_SC_Profile.png"
                     alt="제일은행"
@@ -131,7 +131,7 @@
       </q-tab> -->
             <q-tab class="tab-item" @click="selectBank('부산은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank8">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_BUSAN_Profile.png"
                     alt="부산은행"
@@ -144,7 +144,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('SH수협은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank9">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_SH_Profile.png"
                     alt="수협은행"
@@ -157,7 +157,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('경남은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank10">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_KYOUNGNAM_Profile.png"
                     alt="경남은행"
@@ -170,7 +170,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('카카오뱅크')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank11">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_KAKAO_Profile.png"
                     alt="카카오뱅크"
@@ -183,7 +183,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('광주은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank12">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_KWANGJU_Profile.png"
                     alt="광주은행"
@@ -196,7 +196,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('토스뱅크')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank13">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_TOSS_Profile.png"
                     alt="토스뱅크"
@@ -209,7 +209,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('전북은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank14">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_JEONBUK_Profile.png"
                     alt="전북은행"
@@ -222,7 +222,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('케이뱅크')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank15">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_K_Profile.png"
                     alt="케이뱅크"
@@ -235,7 +235,7 @@
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('제주은행')">
               <label>
-                <div class="card-company-logo">
+                <div class="card-company-logo bank16">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_JEJU_Profile.png"
                     alt="제주은행"
@@ -622,16 +622,16 @@ const select_period = (month) => {
 
   // 클릭된 막대의 색상을 변경합니다.
   if (month === "6개월") {
-    document.querySelector(".bar_1").style.backgroundColor = "#054cc9";
+    document.querySelector(".bar_1").style.backgroundColor = "#fd6102";
     changeSearchForm("period", "6");
   } else if (month === "12개월") {
-    document.querySelector(".bar_1").style.backgroundColor = "#054cc9";
-    document.querySelector(".bar_2").style.backgroundColor = "#054cc9";
+    document.querySelector(".bar_1").style.backgroundColor = "#fd6102";
+    document.querySelector(".bar_2").style.backgroundColor = "#fd6102";
     changeSearchForm("period", "12");
   } else if (month === "24개월 이상") {
-    document.querySelector(".bar_1").style.backgroundColor = "#054cc9";
-    document.querySelector(".bar_2").style.backgroundColor = "#054cc9";
-    document.querySelector(".bar_3").style.backgroundColor = "#054cc9";
+    document.querySelector(".bar_1").style.backgroundColor = "#fd6102";
+    document.querySelector(".bar_2").style.backgroundColor = "#fd6102";
+    document.querySelector(".bar_3").style.backgroundColor = "#fd6102";
     changeSearchForm("period", "전체");
   } else {
     document.querySelector(".bar_1").style.backgroundColor = "#e8ebef";
@@ -922,7 +922,7 @@ const removeFilter = (type, index = null) => {
   gap: 4px;
   justify-content: center;
   align-items: center;
-  color: #054cc9;
+  color: #fd6102;
 }
 
 .card-percent div:nth-child(1) p {
@@ -1032,12 +1032,12 @@ const removeFilter = (type, index = null) => {
   width: 24px;
   height: 22px;
   background-color: white;
-  border: 5px solid #054cc9;
+  border: 5px solid #fd6102;
   border-radius: 50px;
 }
 
 #whole {
-  color: #054cc9;
+  color: #fd6102;
   font-weight: bold;
   position: absolute;
   transform: translate(109px, 44px);
@@ -1131,7 +1131,7 @@ div#month_24 {
   font-size: 14px;
   line-height: 20px;
   letter-spacing: -0.3px;
-  color: #09aa5c;
+  color: #fd6102;
   display: flex;
   gap: 3px;
 }
@@ -1152,8 +1152,8 @@ div#month_24 {
 }
 
 .bank-condi.c1 {
-  background-color: #e5f3fe;
-  color: #058bd7;
+  background-color: #ededed;
+  color: #a4a4a4;
 }
 
 .bank-condi.c2 {
@@ -1178,5 +1178,10 @@ div#month_24 {
   font-weight: 800;
   font-size: 19px;
   line-height: 32px;
+}
+
+.card-company-logo.bank6 img {
+  width: 81%;
+  margin: 0 auto;
 }
 </style>
