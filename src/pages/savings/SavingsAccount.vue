@@ -469,7 +469,14 @@
 </template>
 
 <script setup>
-import { defineComponent, onBeforeMount, onMounted, ref, reactive } from "vue";
+import {
+  defineComponent,
+  onBeforeMount,
+  onMounted,
+  ref,
+  reactive,
+  watch,
+} from "vue";
 import { useRouter, useRoute } from "vue-router";
 import { useQuasar } from "quasar";
 import { api } from "boot/axios";
@@ -480,6 +487,7 @@ defineOptions({
 });
 
 const $router = useRouter();
+const $route = useRoute();
 const $q = useQuasar();
 // 필터
 const cardCompanyCode = ref("");
@@ -567,10 +575,10 @@ const changeSortOrder = (event) => {
 //       })
 //     }
 
-onMounted(() => {
-  CardList();
-  console.log("onmounted");
-});
+// onMounted(() => {
+//   CardList();
+//   console.log("onmounted");
+// });
 
 const searchForm = ref({
   limit: "10",
@@ -612,7 +620,14 @@ const totalData = ref(0);
 
 const product = ref({ cards: [] });
 
-const CardList = async () => {
+const CardList = async (menu_to_benefit) => {
+  if (menu_to_benefit) {
+    if (!cardBenefits.includes(menu_to_benefit)) {
+      cardBenefits.push(menu_to_benefit);
+    }
+    changeSearchForm("benefits", cardBenefits.join(","));
+  }
+
   console.log("..?");
   const url = `${process.env.API}/v1/card/list?limit=${encodeURIComponent(
     searchForm.value.limit
@@ -697,6 +712,15 @@ const goCardsDetail = (detailId) => {
     path: `/savings/cards/${detailId}`,
   });
 };
+
+onMounted(() => {
+  CardList($route.params.id);
+});
+
+watch($route, (newRoute) => {
+  resetFilters();
+  CardList(newRoute.params.id);
+});
 </script>
 <style lang="scss" scoped>
 .card-article {

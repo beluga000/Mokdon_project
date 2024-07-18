@@ -265,15 +265,15 @@ const goMenu = (menu) => {
     });
   } else if (menu == "교통") {
     $router.push({
-      path: `/savings/SavingsAccount_Menu/대중교통`,
+      path: `/savings/SavingsAccount/대중교통`,
     });
   } else if (menu == "통신") {
     $router.push({
-      path: `/savings/SavingsAccount_Menu/통신`,
+      path: `/savings/SavingsAccount/통신`,
     });
   } else if (menu == "주유") {
     $router.push({
-      path: `/savings/SavingsAccount_Menu/주유`,
+      path: `/savings/SavingsAccount/주유`,
     });
   } else if (menu == "예금") {
     $router.push({

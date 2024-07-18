@@ -184,9 +184,9 @@
               -{{ taxAmount.toLocaleString() }}원
             </dd>
           </div>
-          <div class="RateRecipt-item">
+          <div class="RateRecipt-item full-price">
             <dt class="RateRecipt-title">세후수령액</dt>
-            <dd class="InterestRateReceipt_info-desc">
+            <dd class="InterestRateReceipt_info-desc-main">
               {{ finalAmount.toLocaleString() }}원
             </dd>
           </div>
@@ -819,6 +819,8 @@ const goDepositDetail = (detailId) => {
 .rate-sperate.selected .rate-label {
   background-color: #f0f8ff;
   border-color: #f08200;
+  color: #f08200;
+  font-weight: 1000;
 }
 .description_area {
   margin-top: 20px;
@@ -1154,6 +1156,18 @@ div.before {
 }
 .InterestRateReceipt_info-desc {
   font-weight: bold;
+  color: #000000;
+}
+
+.InterestRateReceipt_info-desc-main {
+  font-weight: bold;
   color: #f08200;
+  font-size: 20px;
+}
+.full-price {
+  margin-top: 17px;
+  padding-top: 13px;
+  border-top: 1px solid #edeff2;
+  line-height: 26px;
 }
 </style>

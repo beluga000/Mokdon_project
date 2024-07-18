@@ -207,7 +207,9 @@
       </div>
 
       <div v-if="result_visible">
-        <div class="txt-saving">선택하신 조건에 맞는 적금입니다.</div>
+        <div class="txt-saving">
+          선택하신 조건에 맞는 {{ resultDeposit.length }}개 적금입니다.
+        </div>
         <div
           class="box-saving result"
           v-for="(item, idx) in resultDeposit"
@@ -241,9 +243,9 @@
           </div>
           <div class="saving-bott">
             <!-- 삭제 예정 테스트용 -->
-            <p style="font-weight: 900">
+            <!-- <p style="font-weight: 900">
               매월{{ item.m_월납입금.toLocaleString() }}
-            </p>
+            </p> -->
             <!-- 삭제 예정 테스트용 -->
             <div class="box-tot-price">
               <p>원금 합계</p>
@@ -805,7 +807,7 @@ p.info-title {
 
 .top-middle {
   font-size: 12px;
-  color: #7d7d7d;
+  color: #fd6102;
 }
 
 .saving-img {

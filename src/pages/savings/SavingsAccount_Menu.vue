@@ -920,4 +920,9 @@ const goCardsDetail = (detailId) => {
   margin: 8px;
   background-color: #ffffff;
 }
+.page-event {
+  font-weight: 800;
+  font-size: 19px;
+  line-height: 32px;
+}
 </style>
