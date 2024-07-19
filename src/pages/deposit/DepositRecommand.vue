@@ -247,6 +247,21 @@
               매월{{ item.m_월납입금.toLocaleString() }}
             </p> -->
             <!-- 삭제 예정 테스트용 -->
+            <div class="nmonth-area">
+              <div
+                class="nmonth-q"
+                @mouseover="showTriTxt = true"
+                @mouseleave="showTriTxt = false"
+              >
+                ?
+              </div>
+              <div class="tri-txt" v-show="showTriTxt">
+                <div class="nmonth-tri"></div>
+                <div class="nmonth-txt">
+                  아래 계산은 총 3번의 상품 가입을 기준으로 계산 된 수치입니다.
+                </div>
+              </div>
+            </div>
             <div class="box-tot-price">
               <p>원금 합계</p>
               <p class="tot-price">{{ item.m_원금.toLocaleString() }}원</p>
@@ -350,6 +365,8 @@ import { useRouter, useRoute } from "vue-router";
 import { useQuasar } from "quasar";
 import { api } from "boot/axios";
 import axios from "axios";
+
+const showTriTxt = ref(false);
 
 const $router = useRouter();
 const $route = useRoute();
@@ -695,8 +712,6 @@ const summary_func = (value) => {
     visible_summary.value = false;
   }
 };
-
-// 사이드 배너
 </script>
 
 <style lang="scss" scoped>
@@ -1017,5 +1032,52 @@ p.rate-text {
 }
 .sub-price {
   font-size: 12px;
+}
+
+.nmonth-tri {
+  width: 0px;
+  height: 0px;
+  border-top: 6px solid transparent;
+  border-right: 9px solid #eeeeee;
+  border-bottom: 6px solid transparent;
+  margin-top: 5px;
+}
+
+.nmonth-q {
+  width: 19px;
+  height: 19px;
+  background-color: #eeeeee;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #a4a4a4;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+.nmonth-txt {
+  color: #8c8a8a;
+  background-color: #eeeeee;
+  border-radius: 3px;
+  width: 62%;
+  font-size: 12px;
+  padding-left: 5px;
+  line-height: 23px;
+}
+
+.tri-txt {
+  display: flex;
+  flex-direction: row;
+  width: 100%;
+}
+
+.nmonth-area {
+  display: flex;
+  flex-direction: row;
+  gap: 5px;
+}
+
+.box-tot-price {
+  margin-top: 8px;
 }
 </style>
