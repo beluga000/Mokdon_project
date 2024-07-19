@@ -242,23 +242,20 @@
             </div>
           </div>
           <div class="saving-bott">
-            <!-- 삭제 예정 테스트용 -->
-            <!-- <p style="font-weight: 900">
-              매월{{ item.m_월납입금.toLocaleString() }}
-            </p> -->
-            <!-- 삭제 예정 테스트용 -->
             <div class="nmonth-area">
               <div
+                v-if="item.m_재투자횟수 !== 1"
                 class="nmonth-q"
-                @mouseover="showTriTxt = true"
-                @mouseleave="showTriTxt = false"
+                @mouseover="item.showTriTxt = true"
+                @mouseleave="item.showTriTxt = false"
               >
                 ?
               </div>
-              <div class="tri-txt" v-show="showTriTxt">
+              <div class="tri-txt" v-show="item.showTriTxt">
                 <div class="nmonth-tri"></div>
                 <div class="nmonth-txt">
-                  아래 계산은 총 3번의 상품 가입을 기준으로 계산 된 수치입니다.
+                  아래 계산은 총 {{ item.m_재투자횟수 }}번의 상품 가입을
+                  기준으로 계산 된 수치입니다.
                 </div>
               </div>
             </div>
@@ -278,6 +275,9 @@
             <div class="box-aft-tax">
               <p>세후수령액</p>
               <p class="aft-tax">{{ item.m_만기금액.toLocaleString() }}원</p>
+            </div>
+            <div class="investment-title" v-if="item.m_재투자횟수 !== 1">
+              <p>※ {{ item.m_재투자횟수 }}번의 재투자 필요</p>
             </div>
           </div>
         </div>
@@ -319,6 +319,23 @@
             </div>
           </div>
           <div class="saving-bott">
+            <div class="nmonth-area">
+              <div
+                v-if="item.m_재투자횟수 !== 1"
+                class="nmonth-q"
+                @mouseover="item.showTriTxt2 = true"
+                @mouseleave="item.showTriTxt2 = false"
+              >
+                ?
+              </div>
+              <div class="tri-txt" v-show="item.showTriTxt2">
+                <div class="nmonth-tri"></div>
+                <div class="nmonth-txt">
+                  아래 계산은 총 {{ item.m_재투자횟수 }}번의 상품 가입을
+                  기준으로 계산 된 수치입니다.
+                </div>
+              </div>
+            </div>
             <div class="box-tot-price">
               <p>원금 합계</p>
               <p class="tot-price">{{ item.m_원금.toLocaleString() }}원</p>
@@ -335,6 +352,9 @@
             <div class="box-aft-tax">
               <p>세후수령액</p>
               <p class="aft-tax">{{ item.m_만기금액.toLocaleString() }}원</p>
+            </div>
+            <div class="investment-title" v-if="item.m_재투자횟수 !== 1">
+              <p>※ {{ item.m_재투자횟수 }}번의 재투자 필요</p>
             </div>
           </div>
         </div>
@@ -650,7 +670,10 @@ const searchSaving = async () => {
     visible.value = true;
     console.log("결과값", res);
 
-    resultDeposit.value = res.data.result;
+    resultDeposit.value = res.data.result.map((item) => {
+      return { ...item, showTriTxt: false };
+    });
+
     total_sum.value = res.data.total_sum;
     total_interest.value = res.data.total_interest;
     total_tax.value = res.data.total_tax;
@@ -665,7 +688,11 @@ const searchSaving = async () => {
       summary.value = true;
     }
 
-    extra_deposit.value = res.data.extra_deposit;
+    extra_deposit.value = res.data.extra_deposit.map((item) => {
+      return { ...item, showTriTxt2: false };
+    });
+
+    //  extra_deposit.value = res.data.extra_deposit;
 
     extra_sum.value.extra_total_sum = res.data.extra_total_sum;
     extra_sum.value.extra_total_interest = res.data.extra_total_interest;
@@ -1079,5 +1106,10 @@ p.rate-text {
 
 .box-tot-price {
   margin-top: 8px;
+}
+.investment-title {
+  margin-top: 10px;
+  font-weight: bold;
+  color: #fd6102;
 }
 </style>

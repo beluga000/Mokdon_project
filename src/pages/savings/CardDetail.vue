@@ -1,7 +1,6 @@
 <template>
   <q-layout class="page-container page-background">
     <q-page class="common-container">
-      <div class="card-txt htxt">카드</div>
       <section class="page-section cardDetail">
         <div class="card-img-wrap">
           <div class="card-img-box">
