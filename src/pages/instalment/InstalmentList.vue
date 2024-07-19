@@ -318,7 +318,13 @@
                 <i class="fa-solid fa-xmark"></i>
               </span>
             </li>
-            <li class="search-filter-item" v-if="cardAnnualFee">
+            <li class="search-filter-item" v-if="Selectperiod">
+              <p>{{ Selectperiod }}</p>
+              <span @click="removeFilter('period')">
+                <i class="fa-solid fa-xmark"></i>
+              </span>
+            </li>
+            <!-- <li class="search-filter-item" v-if="cardAnnualFee">
               <p>{{ cardAnnualFee }}</p>
               <span @click="removeFilter('cardAnnualFee')">
                 <i class="fa-solid fa-xmark"></i>
@@ -329,7 +335,7 @@
               <span @click="removeFilter('cardPerformance')">
                 <i class="fa-solid fa-xmark"></i>
               </span>
-            </li>
+            </li> -->
           </ul>
           <div class="search-filter-icon" @click="resetFilters">
             <i class="fa-solid fa-arrows-rotate"></i>
@@ -429,6 +435,8 @@ const bankCompanyName = ref("");
 const productCategories = reactive([]);
 const selectAmount = ref("");
 
+const Selectperiod = ref("");
+
 // 초기 설정
 onMounted(() => {
   InstalmentList();
@@ -515,12 +523,15 @@ const loadMoreCards = () => {
 
 const select_period = (month) => {
   if (month === "6개월") {
+    Selectperiod.value = "6개월";
     console.log("6개월");
     document.querySelector(".bar_cir").style.transform = "translate(185px, 0)";
   } else if (month === "12개월") {
+    Selectperiod.value = "12개월";
     console.log("12개월");
     document.querySelector(".bar_cir").style.transform = "translate(360px, 0)";
   } else if (month === "24개월 이상") {
+    Selectperiod.value = "24개월 이상";
     console.log("24개월 이상");
     document.querySelector(".bar_cir").style.transform = "translate(537px, 0)";
   } else {
@@ -623,6 +634,22 @@ const resetFilters = () => {
   searchForm.value.basic_rate_sort = "";
   searchForm.value.max_rate_sort = "desc";
   InstalmentList();
+};
+
+const removeFilter = (type, index = null) => {
+  if (type === "bankCompanyName") {
+    bankCompanyName.value = "";
+    changeSearchForm("bank_name", "");
+  } else if (type === "instalment_options" && index !== null) {
+    if (instalment_options) {
+      instalment_options.splice(index, 1);
+      changeSearchForm("categories", instalment_options.join(","));
+    }
+  } else if (type === "period") {
+    Selectperiod.value = "";
+    changeSearchForm("period", "");
+    select_period("전체");
+  }
 };
 </script>
 
