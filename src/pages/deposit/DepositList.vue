@@ -20,80 +20,68 @@
           >
             <q-tab class="tab-item" @click="selectBank('KB국민은행')">
               <label>
-                <div class="card-company-logo bank1">
+                <span class="card-company-logo bank1">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_KB_Profile.png"
                     alt="국민은행"
                   />
-                </div>
-                <div class="card-company-name">
-                  <span>KB국민</span>
-                </div>
+                </span>
+                <span class="card-company-name">KB국민</span>
               </label>
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('신한은행')">
               <label>
-                <div class="card-company-logo bank2">
+                <span class="card-company-logo bank2">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_SHINHAN_Profile.png"
                     alt="신한은행"
                   />
-                </div>
-                <div class="card-company-name">
-                  <span>신한</span>
-                </div>
+                </span>
+                <span class="card-company-name">신한</span>
               </label>
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('하나은행')">
               <label>
-                <div class="card-company-logo bank3">
+                <span class="card-company-logo bank3">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_SHINHAN_Profile.png"
                     alt="하나은행"
                   />
-                </div>
-                <div class="card-company-name">
-                  <span>하나</span>
-                </div>
+                </span>
+                <span class="card-company-name">하나</span>
               </label>
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('우리은행')">
               <label>
-                <div class="card-company-logo bank4">
+                <span class="card-company-logo bank4">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_WOORI_Profile.png"
                     alt="우리은행"
                   />
-                </div>
-                <div class="card-company-name">
-                  <span>우리</span>
-                </div>
+                </span>
+                <span class="card-company-name">우리</span>
               </label>
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('IBK기업은행')">
               <label>
-                <div class="card-company-logo bank5">
+                <span class="card-company-logo bank5">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_IBK_Profile.png"
                     alt="기업은행"
                   />
-                </div>
-                <div class="card-company-name">
-                  <span>IBK기업</span>
-                </div>
+                </span>
+                <span class="card-company-name">IBK기업</span>
               </label>
             </q-tab>
             <q-tab class="tab-item" @click="selectBank('KDB산업은행')">
               <label>
-                <div class="card-company-logo bank6">
+                <span class="card-company-logo bank6">
                   <img
                     src="https://financial.pstatic.net/pie/common-bi/1.4.0/images/BK_KDB_Profile.png"
                     alt="산업은행"
                   />
-                </div>
-                <div class="card-company-name">
-                  <span>KDB산업</span>
-                </div>
+                </span>
+                <span class="card-company-name">KDB산업</span>
               </label>
             </q-tab>
             <!-- <q-tab class="tab-item" @click='selectBank("신협")'>
@@ -965,7 +953,6 @@ const removeFilter = (type, index = null) => {
 }
 .card-company-logo {
   width: 100%;
-  height: 50px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -1180,8 +1167,83 @@ div#month_24 {
   line-height: 32px;
 }
 
+.card-company-logo.bank1 img {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank2 img {
+  width: 97%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank3 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank4 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank5 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
 .card-company-logo.bank6 img {
   width: 81%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank7 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank8 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank9 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank10 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank11 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank12 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank13 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank14 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank15 img {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.card-company-logo.bank16 img {
+  width: 80%;
   margin: 0 auto;
 }
 </style>
