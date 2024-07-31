@@ -19,6 +19,12 @@ const savingsRoutes = [
         props: true,
         component: () => import("../pages/savings/CardDetail.vue"),
       },
+      {
+        path: "CardRecommand",
+        name: "CardRecommand",
+        props: true,
+        component: () => import("../pages/savings/CardRecommand.vue"),
+      },
     ],
   },
 ];

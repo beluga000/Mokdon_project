@@ -68,6 +68,10 @@
               <section>
                 <ul class="menu-list-wrap">
                   <div class="menu-list list-title">신용카드 추천</div>
+                  <li class="menu-list" @click="goMenu('카드추천')">
+                    <!-- <p>🥇 2024 신용카드 추천</p> -->
+                    <p>내게 맞는 카드 추천</p>
+                  </li>
                   <li class="menu-list" @click="goMenu('신용카드')">
                     <!-- <p>🥇 2024 신용카드 추천</p> -->
                     <p>전체보기</p>
@@ -282,6 +286,10 @@ const goMenu = (menu) => {
   } else if (menu == "적금추천") {
     $router.push({
       path: `/deposit/DepositRecommand`,
+    });
+  } else if (menu == "카드추천") {
+    $router.push({
+      path: `/savings/CardRecommand`,
     });
   }
 };

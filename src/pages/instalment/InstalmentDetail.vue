@@ -310,7 +310,7 @@
         </div>
       </section> -->
       <section class="page-section application-section" @click="goApplication">
-        <div class="application-button">적금 자세히 보기</div>
+        <div class="application-button">예금 자세히 보기</div>
       </section>
       <div class="common-container info-wrap">
         <p class="info-title">
