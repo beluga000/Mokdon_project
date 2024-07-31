@@ -41,7 +41,10 @@
       </section>
       <div class="benef-txt htxt">주요 혜택</div>
       <div class="benef b1">
-        <div class="b1-txt">연회비지원</div>
+        <div class="b1-txt">
+          <i class="fa-solid fa-money-check-dollar"></i>
+          연회비지원
+        </div>
         <ul class="b1-list">
           <li class="f-benef">
             - 롯데백화점 15% 청구할인 서비스롯데백화점 5% 현장할인 e-쿠폰 제공
@@ -50,7 +53,10 @@
         </ul>
       </div>
       <div class="benef b2">
-        <div class="b2-txt">쇼핑</div>
+        <div class="b2-txt">
+          <i class="fa-solid fa-bag-shopping"></i>
+          쇼핑
+        </div>
         <ul class="b2-list">
           <li class="f-benef">
             - 롯데백화점 15% 청구할인 서비스롯데백화점 5% 현장할인 e-쿠폰 제공
@@ -60,7 +66,7 @@
       </div>
       <div class="last-txt htxt">전월실적</div>
       <section class="page-section lastGoal">
-        <div v-if="checkAmount">
+        <!-- <div v-if="checkAmount">
           <div class="discount-box">
             <div class="discount-text">
               <div class="amount-text" id="discount-amount">
@@ -86,14 +92,17 @@
               </div>
             </button>
           </div>
-        </div>
+        </div> -->
         <div class="last-box">
-          <div class="last-txt"></div>
-          <ul class="last-numb">
-            <li></li>
-            <li></li>
-            <li></li>
-          </ul>
+          <div class="last-txt">한 달에 받는 나의 혜택</div>
+          <div class="max-">20,000원</div>
+          <div>최대할인한도 20,000원</div>
+          <div class="last-numb">
+            <div>100,000</div>
+            <div>300,000</div>
+            <div>500,000</div>
+            <div>1,000,000</div>
+          </div>
         </div>
       </section>
 
@@ -544,6 +553,8 @@ const goApplication = () => {
   font-size: 18px;
   font-family: "Noto Sans KR";
   padding-left: 50px;
+  margin-top: 10px;
+  font-weight: bolder;
 }
 
 ul.b1-list,
@@ -566,5 +577,9 @@ ul.b2-list {
   background-color: #dedede;
   border-radius: 50px;
   width: 100%;
+}
+
+.fa-solid {
+  width: 20px;
 }
 </style>
