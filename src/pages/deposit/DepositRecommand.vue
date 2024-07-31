@@ -43,7 +43,7 @@
                 flat
                 label="취소"
                 color="primary"
-                @click="showAmountInput = false"
+                @click="resetAmount"
               ></q-btn>
               <q-btn
                 flat
@@ -139,7 +139,7 @@
           ></q-btn>
         </div>
         <div class="sideBanner" v-if="visible">
-          <div v-if="visible_extra">
+          <div class="extra-top" v-if="visible_extra">
             <p>월 납입 금액 가입 가능 상품 요약</p>
           </div>
           <div class="sideTitle">적금 요약</div>
@@ -201,6 +201,13 @@
                   원
                 </li>
               </ul>
+            </div>
+            <div
+              class="extra-sum"
+              v-if="!summary"
+              @click="summary_func('닫기')"
+            >
+              <p>추가 적금 요약 닫기</p>
             </div>
           </div>
         </div>
@@ -737,6 +744,7 @@ const summary_func = (value) => {
     summary.value = false;
   } else if (value == "닫기") {
     visible_summary.value = false;
+    summary.value = true;
   }
 };
 </script>
@@ -1111,5 +1119,9 @@ p.rate-text {
   margin-top: 10px;
   font-weight: bold;
   color: #fd6102;
+}
+.extra-top {
+  padding-bottom: 9px;
+  font-weight: bold;
 }
 </style>
