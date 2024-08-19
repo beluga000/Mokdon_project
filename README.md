@@ -34,3 +34,20 @@
 
 
 ![스크린샷 2024-08-19 오후 6 38 08](https://github.com/user-attachments/assets/bd9e3e4c-b63b-44d5-ae79-3020d4c37f98)
+
+
+## 주요 서비스 화면
+
+#### 적금 추천
+<img width="1252" alt="mokdon2" src="https://github.com/user-attachments/assets/c76876eb-7920-4411-b292-4d7ca3c0c184">
+<img width="1248" alt="mokdon3" src="https://github.com/user-attachments/assets/a403a3ca-ae4f-4b73-b3d4-9a311478cc6d">
+
+#### 적금 조회
+<img width="1422" alt="mokdon4" src="https://github.com/user-attachments/assets/488147df-b84b-4d28-8768-db60d689445f">
+<img width="1421" alt="mokdon5" src="https://github.com/user-attachments/assets/9d3f1f44-cd06-419e-9c9f-bbd8df167837">
+<img width="1418" alt="mokdon6" src="https://github.com/user-attachments/assets/d3762201-a1d6-4a22-b743-e32a3b830456">
+
+#### 신용카드 조회
+<img width="1425" alt="mokdon7" src="https://github.com/user-attachments/assets/0a736fb0-f530-437a-935e-d9fed12167d6">
+<img width="1426" alt="mokdon8" src="https://github.com/user-attachments/assets/c68d41d4-fe3c-4670-86d7-4d8855ad14bc">
+<img width="1421" alt="mokdon9" src="https://github.com/user-attachments/assets/4833365a-9717-4b8b-b65f-8b4e5e2059b9">
