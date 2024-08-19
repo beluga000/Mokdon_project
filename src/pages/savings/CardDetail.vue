@@ -32,33 +32,31 @@
           </div>
         </article>
       </section>
-      <div class="benef-txt htxt">주요 혜택</div>
-      <div class="benef b1">
-        <div class="b1-txt">
-          <i class="fa-solid fa-money-check-dollar"></i>
-          연회비지원
-        </div>
-        <ul class="b1-list">
-          <li class="f-benef">
-            - 롯데백화점 15% 청구할인 서비스롯데백화점 5% 현장할인 e-쿠폰 제공
-          </li>
-          <li class="s-benef">- 롯데백화점 12개월 할부 서비스</li>
-        </ul>
-      </div>
-      <div class="benef b2">
-        <div class="b2-txt">
-          <i class="fa-solid fa-bag-shopping"></i>
-          쇼핑
-        </div>
-        <ul class="b2-list">
-          <li class="f-benef">
-            - 롯데백화점 15% 청구할인 서비스롯데백화점 5% 현장할인 e-쿠폰 제공
+      <section class="page-section">
+        <div class="benefits-title">🎁 주요 혜택</div>
+        <ul class="benefits-wrap">
+          <li
+            class="benefits-list"
+            v-for="(benefit, index) in cardDetail.benefits"
+            :key="index"
+          >
+            <div class="benefit-icon-wrap">
+              <img
+                :src="benefit.iconFileNameUrl"
+                class="card-img"
+                alt="카드 이미지"
+              />
+            </div>
+            <p>{{ benefit.rootBenefitCategoryIdName }}</p>
           </li>
         </ul>
-      </div>
-      <div class="last-txt htxt">전월실적</div>
-      <section class="page-section lastGoal">
-        <!-- <div v-if="checkAmount">
+      </section>
+
+      <section class="page-section">
+        <!-- <div class="benefits-title">🎁 상세 혜택</div> -->
+        <div class="benefits-title">한 달에 이만큼 혜택 받아요</div>
+
+        <div v-if="checkAmount">
           <div class="discount-box">
             <div class="discount-text">
               <div class="amount-text" id="discount-amount">
@@ -84,16 +82,18 @@
               </div>
             </button>
           </div>
-        </div> -->
-        <div class="last-box">
-          <div class="last-txt">한 달에 받는 나의 혜택</div>
-          <div class="max-">20,000원</div>
-          <div>최대할인한도 20,000원</div>
-          <div class="last-numb">
-            <div>100,000</div>
-            <div>300,000</div>
-            <div>500,000</div>
-            <div>1,000,000</div>
+        </div>
+
+        <div
+          class="benefits-box"
+          v-for="(item, index) in cardDetailInfo.benefit"
+          :key="index"
+        >
+          <div class="title-box">
+            {{ item.title }}
+          </div>
+          <div class="description-box">
+            {{ item.content }}
           </div>
         </div>
       </section>
@@ -506,71 +506,5 @@ const goApplication = () => {
 }
 .sub-amount-text {
   margin-top: 10px;
-}
-
-.kor-box,
-.int-box {
-  background-color: #efefef;
-  border-radius: 3px;
-  color: #757575;
-  padding: 0 6px;
-}
-
-.kor-int {
-  display: flex;
-  flex-direction: row;
-  margin: 0 auto;
-  gap: 15px;
-}
-
-.page-section.cardDetail {
-  padding: 55px 0;
-}
-
-.htxt {
-  font-size: 24px;
-  font-weight: bolder;
-  color: #000000;
-  margin-top: 40px;
-  padding-left: 12px;
-}
-
-.b1-txt,
-.b2-txt {
-  width: 100%;
-  background-color: #ffffff;
-  border-radius: 9px;
-  line-height: 67px;
-  font-size: 18px;
-  font-family: "Noto Sans KR";
-  padding-left: 50px;
-  margin-top: 10px;
-  font-weight: bolder;
-}
-
-ul.b1-list,
-ul.b2-list {
-  width: 100%;
-  background-color: #ffffff;
-  margin-top: -10px;
-  padding: 20px 0 27px 27px;
-  border-radius: 0 0 9px 9px;
-  display: flex;
-  flex-direction: column;
-  gap: 12px;
-}
-
-.benef.b1 {
-  margin-bottom: 20px;
-}
-
-.last-numb {
-  background-color: #dedede;
-  border-radius: 50px;
-  width: 100%;
-}
-
-.fa-solid {
-  width: 20px;
 }
 </style>
